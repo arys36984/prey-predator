@@ -6,7 +6,7 @@ import java.util.Random;
  * A simple model of a ocelot.
  * Ocelotes age, move, eat armadilos, and die.
  * 
- * @author David J. Barnes, Aryan Sanvee Vijayan and Michael Kölling
+ * @author David J. Barnes, Aryan Sanvee Vijayan, Alexander Sukhi and Michael Kölling
  * @version 19/02/2025
  */
 public class Ocelot extends Predator

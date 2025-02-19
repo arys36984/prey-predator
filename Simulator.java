@@ -54,6 +54,8 @@ public class Simulator
 
     /**
      * Construct a simulation field with specific size.
+     * @param depth The simulation's depth.
+     * @param width The simulation's width.
      */
     public Simulator(int depth, int width)
     {
@@ -105,10 +107,10 @@ public class Simulator
         // Replace the old state with the new one.
         field = nextFieldState;
 
-        // Changes the day/time cycle every 20 steps.
+        // Changes the day/time cycle every 10 steps.
         changeTime();
 
-        // Changes the weather cycle every 10 steps.
+        // Changes the weather cycle every 5 steps.
         changeWeather();
 
         reportStats();

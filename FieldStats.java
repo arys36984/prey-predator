@@ -6,7 +6,7 @@ import java.util.Map;
  * of a field. It is flexible: it will create and maintain a counter 
  * for any class of object that is found within the field.
  * 
- * @author David J. Barnes and Michael Kölling
+ * @author David J. Barnes, Alexander Sukhin and Michael Kölling
  * @version 7.0
  */
 public class FieldStats

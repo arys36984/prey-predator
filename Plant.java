@@ -10,6 +10,7 @@ public abstract class Plant extends Organism
 {
     /**
      * Constructor for objects of class Plant
+     * @param location The animal's location.
      */
     public Plant(Location location)
     {

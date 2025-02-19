@@ -5,7 +5,7 @@ import java.util.List;
  * A simple model of a lion.
  * Lions age, move, eat giraffe, and die.
  * 
- * @author Aryan Sanvee Vijayan
+ * @author Aryan Sanvee Vijayan, Alexander Sukhin
  * @version 18/02/2025
  */
 public class Lion extends Predator

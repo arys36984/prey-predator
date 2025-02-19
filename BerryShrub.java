@@ -13,7 +13,6 @@ public class BerryShrub extends CorePlant
 
     /**
      * Creates a berry shrub.
-     * 
      * @param location The location within the field.
      */
     public BerryShrub(Location location)

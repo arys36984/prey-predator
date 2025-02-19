@@ -14,6 +14,7 @@ public abstract class Organism
 
     /**
      * Constructor for objects of class Organism
+     * @param location The animal's location.
      */
     public Organism(Location location)
     {

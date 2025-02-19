@@ -5,7 +5,7 @@ import java.util.List;
  * A simple model of a giraffe.
  * Giraffe age, move, breed, and die..
  *
- * @Aryan Sanvee Vijayan
+ * @author Aryan Sanvee Vijayan, Alexander Sukhin
  * @version 18/02/2025
  */
 public class Giraffe extends Prey

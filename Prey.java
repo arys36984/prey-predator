@@ -4,7 +4,7 @@ import java.util.Random;
 /**
  * A general model of a prey in the simulation.
  *
- * @author Aryan Sanvee Vijayan
+ * @author Aryan Sanvee Vijayan, Alexander Sukhin
  * @version 18/02/2025
  */
 public abstract class Prey extends Animal

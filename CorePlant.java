@@ -26,7 +26,6 @@ public abstract class CorePlant extends Plant
      * Creates a core plant. A core plant represents the centre
      * of each plant, and handles the logic of growing plants
      * via a list of leaf cells.
-     * 
      * @param location The location within the field.
      */
     public CorePlant(Location location)

@@ -5,7 +5,7 @@ import java.util.Random;
  * A simple model of a armadillo.
  * Armadillos age, move, breed, and die.
  * 
- * @author David J. Barnes, Aryan Sanvee Vijayan and Michael Kölling
+ * @author David J. Barnes, Aryan Sanvee Vijayan, Alexander Sukhin and Michael Kölling
  * @version 18/02/2025
  */
 public class Armadillo extends Prey

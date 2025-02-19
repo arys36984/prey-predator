@@ -4,7 +4,7 @@ import java.util.Random;
 /**
  * Common elements of predators and preys.
  *
- * @author David J. Barnes and Michael Kölling
+ * @author David J. Barnes, Aryan Sanvee Vijayan, Alexander Sukhin, and Michael Kölling
  * @version 7.0
  */
 public abstract class Animal extends Organism
@@ -95,6 +95,8 @@ public abstract class Animal extends Organism
      */
     public void checkIfInfected(Field field) {
         List<Location> adjacentLocations = field.getAdjacentLocations(getLocation());
+        // Checks each location for infected animals and sets
+        // current animal to infected if true.
         for (Location loc : adjacentLocations) {
             Animal animal = field.getAnimalAt(loc);
             if (animal != null && animal.isInfected()) {
@@ -160,7 +162,6 @@ public abstract class Animal extends Organism
     /**
      * Set the age of the animal.
      * @param newAge The age to set the animal to.
-     * @return age Age of the animal
      */
     public void setAge(int newAge)
     {

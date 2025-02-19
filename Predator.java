@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * A general model of a predator in the simulation.
  *
- * @author Aryan Sanvee Vijayan
+ * @author Aryan Sanvee Vijayan, Alexander Sukhin
  * @version 18/02/2025
  */
 public abstract class Predator extends Animal
@@ -49,7 +49,7 @@ public abstract class Predator extends Animal
 
     /**
      * This is what the predator does most of the time: it hunts for
-     * armadillos. In the process, it might breed, die of hunger,
+     * prey. In the process, it might breed, die of hunger,
      * or die of old age.
      * @param currentField The field currently occupied.
      * @param nextFieldState The updated field.
@@ -170,12 +170,14 @@ public abstract class Predator extends Animal
     protected void giveBirth(Field nextFieldState, List<Location> freeLocations)
     {
         // Places new offspring into adjacent locations.
-        int births = breed();
-        if(births > 0) {
-            for (int b = 0; b < births && !freeLocations.isEmpty(); b++) {
-                Location loc = freeLocations.remove(0);
-                Animal young = offspring(loc);
-                nextFieldState.placeAnimal(young, loc);
+        if (hasCompatibleMate(nextFieldState)) {
+            int births = breed();
+            if(births > 0) {
+                for (int b = 0; b < births && !freeLocations.isEmpty(); b++) {
+                    Location loc = freeLocations.remove(0);
+                    Animal young = offspring(loc);
+                    nextFieldState.placeAnimal(young, loc);
+                }
             }
         }
     }

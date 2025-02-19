@@ -4,7 +4,7 @@ import java.util.*;
  * A simple model of a snake.
  * Snakes age, move, eat armadillos, and die.
  *
- * @author Aryan Sanvee Vijayan
+ * @author Aryan Sanvee Vijayan, Alexander Sukhin
  * @version 18/02/2025
  */
 public class Snake extends Predator
@@ -15,7 +15,7 @@ public class Snake extends Predator
     // The age to which a snake can live.
     private static final int MAX_AGE = 250;
     // The likelihood of a snake breeding.
-    private static final double BREEDING_PROBABILITY = 0.35;
+    private static final double BREEDING_PROBABILITY = 0.3;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 30;
     // Snakes are mostly diurnal (active at day).

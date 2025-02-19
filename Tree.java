@@ -13,7 +13,6 @@ public class Tree extends CorePlant
 
     /**
      * Creates a tree.
-     * 
      * @param location The location within the field.
      */
     public Tree(Location location)
