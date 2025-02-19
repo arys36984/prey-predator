@@ -156,19 +156,15 @@ public class Field
     }
 
     /**
-     * Print out the number of ocelotes and armadillos in the field.
+     * Print out the number of animals and edible leaves in the field.
+     * Plant cores are not edible so ignore those.
      */
     public void fieldStats()
     {
         HashMap<Class<?>, Integer> counts = new HashMap<>();
-        int numInfected = 0;
         for(Pair<Animal, Plant> pair : field.values()) {
             Animal anAnimal = pair.first();
-
-            if (anAnimal != null && anAnimal.isInfected()) {
-                numInfected++;
-            }
-
+            
             if (anAnimal != null && anAnimal.isAlive()) {
                 Class<?> animalClass = anAnimal.getClass();
                 if (counts.get(animalClass) == null) {
@@ -186,9 +182,14 @@ public class Field
         for (Class<?> animalClass : animalClasses) {
             output += animalClass.getSimpleName() + ": " + counts.get(animalClass) + " ";
         }
-        System.out.println(output + "Infected: " + numInfected);
+        System.out.println(output + "Infected: " + infectedCount()
+                            + " " + "Leaves: " + ediblePlantCount());
     }
-
+    
+    /**
+     * Generate a count of all the infected animals in the field.
+     * @return The number of infected animals.
+     */
     public int infectedCount() {
         int numInfected = 0;
         for(Pair<Animal, Plant> pair : field.values()) {
@@ -200,6 +201,23 @@ public class Field
             }
         }
         return numInfected;
+    }
+    
+    /**
+     * Generate a count of all the leaves (edible) in the field.
+     * @return The number of leaves
+     */
+    public int ediblePlantCount() {
+        int numPlants = 0;
+        for(Pair<Animal, Plant> pair : field.values()) {
+
+            Plant plant = pair.second();
+
+            if (plant != null && plant.getClass() == LeafCell.class) {
+                numPlants++;
+            }
+        }
+        return numPlants;
     }
 
     /**

@@ -49,6 +49,9 @@ public class FieldStats
         }
         details.append("Infected: ");
         details.append(field.infectedCount());
+        details.append(" ");
+        details.append("Leaves: ");
+        details.append(field.ediblePlantCount());
         return details.toString();
     }
     
