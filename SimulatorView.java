@@ -121,7 +121,7 @@ public class SimulatorView extends JFrame
                 Class<?> plantClass = null;
 
                 if (plant != null) {
-                    
+
                     // Gets the class of the plant.
                     plantClass = plant.getClass();
 
@@ -135,7 +135,7 @@ public class SimulatorView extends JFrame
                             // Draws green for berry shrub parents.
                             if (parentClass == BerryShrub.class) {
                                 fieldView.drawMark(col, row, Color.green);
-                            // Draws dark green for tree parents.
+                                // Draws dark green for tree parents.
                             } else if (parentClass == Tree.class) {
                                 fieldView.drawMark(col, row, new Color(0, 153, 51));
                             }   

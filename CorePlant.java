@@ -102,7 +102,7 @@ public abstract class CorePlant extends Plant
         // We clear the leaf cells list in order to add more leaf cells
         // if we reach phase 3.
         if (phase == 3) leafCells.clear();
- 
+
         // Adds the leaf cells to the grid and the plant in either 2x2
         // or 3x3 format.
         for(int roffset = minOffSet; roffset <= 1; roffset++) {

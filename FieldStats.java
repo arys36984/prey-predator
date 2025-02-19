@@ -44,9 +44,9 @@ public class FieldStats
         for(Class<?> key : counters.keySet()) {
             Counter info = counters.get(key);
             details.append(info.getName())
-                   .append(": ")
-                   .append(info.getCount())
-                   .append(' ');
+            .append(": ")
+            .append(info.getCount())
+            .append(' ');
         }
         details.append("Infected: ");
         details.append(field.infectedCount());
@@ -55,7 +55,7 @@ public class FieldStats
         details.append(field.ediblePlantCount());
         return details.toString();
     }
-    
+
     /**
      * Invalidate the current set of statistics; reset all 
      * counts to zero.
@@ -103,7 +103,7 @@ public class FieldStats
     {
         return field.isViable();
     }
-    
+
     /**
      * Generate counts of the number of foxes and rabbits.
      * These are not kept up to date as foxes and rabbits

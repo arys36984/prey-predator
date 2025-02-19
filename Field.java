@@ -182,7 +182,7 @@ public class Field
         HashMap<Class<?>, Integer> counts = new HashMap<>();
         for(Pair<Animal, Plant> pair : field.values()) {
             Animal anAnimal = pair.first();
-            
+
             if (anAnimal != null && anAnimal.isAlive()) {
                 Class<?> animalClass = anAnimal.getClass();
                 // Puts the class and integer 1 into hashmap if
@@ -205,9 +205,9 @@ public class Field
             output += animalClass.getSimpleName() + ": " + counts.get(animalClass) + " ";
         }
         System.out.println(output + "Infected: " + infectedCount()
-                            + " " + "Leaves: " + ediblePlantCount());
+            + " " + "Leaves: " + ediblePlantCount());
     }
-    
+
     /**
      * Generate a count of all the infected animals in the field.
      * @return The number of infected animals.
@@ -217,7 +217,7 @@ public class Field
         for(Pair<Animal, Plant> pair : field.values()) {
 
             Animal anAnimal = pair.first();
-            
+
             // Increments count by one for every infected animal.
             if (anAnimal != null && anAnimal.isInfected()) {
                 numInfected++;
@@ -225,7 +225,7 @@ public class Field
         }
         return numInfected;
     }
-    
+
     /**
      * Generate a count of all the leaves (edible) in the field.
      * @return The number of leaves

@@ -43,7 +43,7 @@ public abstract class Animal extends Organism
      * @param nextFieldState The new state being built.
      * @param time The current day/night cycle.
      * @param weather The current weather conditions.
-    */
+     */
     abstract public void act(Field currentField, Field nextFieldState, Time time, Weather weather);
 
     /**
