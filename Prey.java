@@ -35,6 +35,8 @@ public abstract class Prey extends Animal
      * around. Sometimes it will breed or die of old age.
      * @param currentField The field occupied.
      * @param nextFieldState The updated field.
+     * @param time The current day/night cycle.
+     * @param weather The current weather conditions.
      */
     public void act(Field currentField, Field nextFieldState, Time time, Weather weather)
     {
@@ -43,7 +45,7 @@ public abstract class Prey extends Animal
         if(isAlive()) {
             List<Location> freeLocations = nextFieldState.getFreeAdjacentLocations(getLocation());
 
-            //Check if the prey is infected in the next field state.
+            // Check if the prey is infected in the next field state.
             checkIfInfected(nextFieldState); 
 
             if (isInfected() && randDouble() < 0.5) {
@@ -100,12 +102,17 @@ public abstract class Prey extends Animal
     {
         if (isFull) {
             hungerTimer++;
+            // If the prey is full and the hunger timer is greater
+            // than the FULL_STEPS variable, sets the prey to hungry
+            // state and resets hunger timer back to 0.
             if (hungerTimer >= FULL_STEPS) {
                 isFull = false;
                 hungerTimer = 0;
             }
         } else {
             hungerTimer++;
+            // If the prey is hungry and the hunger timer is greater
+            // than the HUNGRY_STEPS variable, sets the prey to dead.
             if (hungerTimer >= HUNGRY_STEPS) {
                 setDead();
                 hungerTimer = 0;
@@ -117,6 +124,7 @@ public abstract class Prey extends Animal
      * Look for plants adjacent to the current location.
      * Only the first live plant is eaten.
      * @param field The field currently occupied.
+     * @param time The current day/night cycle.
      * @return Where food was found, or null if it wasn't.
      */
     private Location findFood(Field field, Time time)
@@ -128,6 +136,7 @@ public abstract class Prey extends Animal
             Location loc = it.next();
             Plant plant = field.getPlantAt(loc);
             if (plant instanceof LeafCell leafCell) {
+                // Checks whether the specific prey hunts the plant found.
                 if (canEat(leafCell)) {
                     leafCell.removeLeaf();
                     hungerTimer = 0;
@@ -142,12 +151,12 @@ public abstract class Prey extends Animal
     /**
      * Check whether this prey is to give birth at this step.
      * New births will be made into free adjacent locations.
+     * @param nextFieldState The updated field.
      * @param freeLocations The locations that are free in the current field.
      */
     protected void giveBirth(Field nextFieldState, List<Location> freeLocations)
     {
-        // New armadillos are born into adjacent locations.
-        // Get a list of adjacent free locations.
+        // Places new offspring into adjacent locations.
         if (hasCompatibleMate(nextFieldState)) {    
             int births = breed();
             if(births > 0) {

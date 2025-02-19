@@ -4,14 +4,13 @@ import java.util.*;
  * Represent a rectangular grid of field positions.
  * Each position is able to store a single animal/object.
  * 
- * @author David J. Barnes, Aryan Sanvee Vijayan and Michael Kölling
+ * @author David J. Barnes, Aryan Sanvee Vijayan, Alexander Sukhin and Michael Kölling
  * @version 02/02/2025
  */
 public class Field
 {
     // A random number generator for providing random locations.
     private static final Random rand = Randomizer.getRandom();
-
     // The dimensions of the field.
     private final int depth, width;
     // Each location holds a pair of Animal, Plant.
@@ -41,14 +40,19 @@ public class Field
      */
     public void placeAnimal(Animal anAnimal, Location location)
     {
+        // Ensures location is not null.
         assert location != null;
 
+        // Retrieves the pair at location if not null. If there
+        // is no pair in the location, retrieves a null pair.
         Pair<Animal, Plant> existingPair = field.getOrDefault(location, new Pair<>(null, null));
 
+        // Removes the animal from the current pair.
         if (existingPair.first() != null) {
             animals.remove(existingPair.first());
         }
 
+        // Creates a new pair with the new animal and the existing plant.
         Pair<Animal, Plant> newPair = new Pair<>(anAnimal, existingPair.second());
         field.put(location, newPair);
         animals.add(anAnimal);
@@ -63,14 +67,19 @@ public class Field
      */
     public void placePlant(Plant plant, Location location)
     {
+        // Ensures location is not null.
         assert location != null;
 
+        // Retrieves the pair at location if not null. If there
+        // is no pair in the location, retrieves a null pair.
         Pair<Animal, Plant> existingPair = field.getOrDefault(location, new Pair<>(null, null));
 
+        // Removes the plant from the current pair.
         if (existingPair.second() != null) {
             plants.remove(existingPair.second());
         }
 
+        // Creates a new pair with the existing animal and the new plant.
         Pair<Animal, Plant> newPair = new Pair<>(existingPair.first(), plant);
         field.put(location, newPair);
         plants.add(plant);
@@ -83,6 +92,8 @@ public class Field
      */
     public Animal getAnimalAt(Location location)
     {   
+        // Returns the animal at the given location if there is any, and
+        // returns null if there is none.
         return field.containsKey(location) ? field.get(location).first() : null;
     }
 
@@ -93,17 +104,21 @@ public class Field
      */
     public Plant getPlantAt(Location location)
     {
+        // Returns the plant at the given location if there is any, and
+        // returns null if there is none.
         return field.containsKey(location) ? field.get(location).second() : null;
     }
 
     /**
-     * Get a shuffled list of the free adjacent locations.
+     * Get a shuffled list of the free adjacent locations of animals.
      * @param location Get locations adjacent to this.
      * @return A list of free adjacent locations.
      */
     public List<Location> getFreeAdjacentLocations(Location location)
     {
+        // The list of free locations to be returned.
         List<Location> free = new LinkedList<>();
+        // The list of adjacent locations.
         List<Location> adjacent = getAdjacentLocations(location);
         for(Location next : adjacent) {
 
@@ -113,6 +128,8 @@ public class Field
                 free.add(next);
             } else {
                 Animal anAnimal = existingPair.first();
+                // Includes null animals and dead animals to
+                // free adjacent locations.
                 if (anAnimal == null || !anAnimal.isAlive()) {
                     free.add(next);
                 }
@@ -161,15 +178,20 @@ public class Field
      */
     public void fieldStats()
     {
+        // A hashmap of classes of animals and integers representing the count.
         HashMap<Class<?>, Integer> counts = new HashMap<>();
         for(Pair<Animal, Plant> pair : field.values()) {
             Animal anAnimal = pair.first();
             
             if (anAnimal != null && anAnimal.isAlive()) {
                 Class<?> animalClass = anAnimal.getClass();
+                // Puts the class and integer 1 into hashmap if
+                // not in the hashmap.
                 if (counts.get(animalClass) == null) {
                     counts.put(animalClass, 1);
                 }
+                // Increments the value of the corresponding class
+                // for every animal.
                 else {
                     int newCount = counts.get(animalClass) + 1;
                     counts.put(animalClass, newCount);
@@ -195,7 +217,8 @@ public class Field
         for(Pair<Animal, Plant> pair : field.values()) {
 
             Animal anAnimal = pair.first();
-
+            
+            // Increments count by one for every infected animal.
             if (anAnimal != null && anAnimal.isInfected()) {
                 numInfected++;
             }
@@ -213,6 +236,7 @@ public class Field
 
             Plant plant = pair.second();
 
+            // Increments count by one for every leaf.
             if (plant != null && plant.getClass() == LeafCell.class) {
                 numPlants++;
             }
@@ -229,8 +253,8 @@ public class Field
     }
 
     /**
-     * Return whether there is at least one armadillo and one ocelot in the field.
-     * @return true if there is at least one armadillo and one ocelot in the field.
+     * Return whether there is at least one animal of each species in the field.
+     * @return true if there is at least one animal of each species in the field.
      */
     public boolean isViable()
     {
@@ -274,6 +298,7 @@ public class Field
 
     /**
      * Get the list of animals.
+     * @return The current list of animals.
      */
     public List<Animal> getAnimals()
     {
@@ -282,6 +307,7 @@ public class Field
 
     /**
      * Get the list of plants.
+     * @return The current list of plants.
      */
     public List<Plant> getPlants()
     {

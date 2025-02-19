@@ -34,10 +34,14 @@ public abstract class Predator extends Animal
         hungerTimer = 0;
 
         if (prey == Armadillo.class) {
+            // The number of steps the predator is full for
+            // after eating a armadillo.
             FULL_STEPS = 5;
             HUNGRY_STEPS = randInt(10);
         }
         else if (prey == Giraffe.class) {
+            // The number of steps the predator is full for
+            // after eating a giraffe.
             FULL_STEPS = 5;
             HUNGRY_STEPS = randInt(50);
         }
@@ -49,6 +53,8 @@ public abstract class Predator extends Animal
      * or die of old age.
      * @param currentField The field currently occupied.
      * @param nextFieldState The updated field.
+     * @param time The current day/night cycle.
+     * @param weather The current weather conditions.
      */
     public void act(Field currentField, Field nextFieldState, Time time, Weather weather)
     {
@@ -88,7 +94,7 @@ public abstract class Predator extends Animal
                 }
             }
             else {
-                // let the predator stay in the same place.
+                // Let the predator stay in the same place.
                 nextFieldState.placeAnimal(this, getLocation());
             }
         }
@@ -101,11 +107,16 @@ public abstract class Predator extends Animal
     {
         if (isFull) {
             hungerTimer++;
+            // If the predator is full and the hunger timer is greater
+            // than the FULL_STEPS variable, sets the predator to hungry
+            // state and resets hunger timer back to 0.
             if (hungerTimer >= FULL_STEPS) {
                 isFull = false;
                 hungerTimer = 0;
             }
         } else {
+            // If the predator is hungry and the hunger timer is greater
+            // than the HUNGRY_STEPS variable, sets the predator to dead.
             hungerTimer++;
             if (hungerTimer >= HUNGRY_STEPS) {
                 setDead();
@@ -118,6 +129,7 @@ public abstract class Predator extends Animal
      * Look for prey adjacent to the current location.
      * Only the first live prey is eaten.
      * @param field The field currently occupied.
+     * @param time The current day/night cycle.
      * @return Where food was found, or null if it wasn't.
      */
     private Location findFood(Field field, Time time)
@@ -128,6 +140,9 @@ public abstract class Predator extends Animal
         while(foodLocation == null && it.hasNext()) {
             Location loc = it.next();
             Animal animal = field.getAnimalAt(loc);
+            // Checks whether the specific predator hunts the prey found
+            // and adjusts the probability of the hunt during the day
+            // and night time.
             if(isPrey(animal) && huntSuccess(time)) {
                 if(animal instanceof Armadillo armadillo) {
                     armadillo.setDead();
@@ -149,12 +164,12 @@ public abstract class Predator extends Animal
     /**
      * Check whether this predator is to give birth at this step.
      * New births will be made into free adjacent locations.
+     * @param nextFieldState The updated field.
      * @param freeLocations The locations that are free in the current field.
      */
     protected void giveBirth(Field nextFieldState, List<Location> freeLocations)
     {
-        // New armadillos are born into adjacent locations.
-        // Get a list of adjacent free locations.
+        // Places new offspring into adjacent locations.
         int births = breed();
         if(births > 0) {
             for (int b = 0; b < births && !freeLocations.isEmpty(); b++) {

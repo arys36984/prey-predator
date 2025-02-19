@@ -23,7 +23,6 @@ public class Giraffe extends Prey
     /**
      * Create a new giraffe. A giraffe may be created with age
      * zero (a new born) or with a random age.
-     * 
      * @param randomAge If true, the giraffe will have a random age.
      * @param location The location within the field.
      */
@@ -87,13 +86,14 @@ public class Giraffe extends Prey
 
     /**
      * Calculate if a giraffe can move at this step.
-     * @param time The time of day/night.
+     * @param time The current day/night cycle.
      * @return true if the giraffe can move, false otherwise.
      */
     protected boolean canMove(Time time) {
         if (time == Time.DAY) {
             return true;
         }
+        // If the time is night, there is a 60% chance of moving at this step.
         else if ((time == Time.NIGHT) && (randDouble() < 0.6)) {
             return true;
         }
@@ -109,6 +109,8 @@ public class Giraffe extends Prey
      * @return true if the prey can eat the leaf, false if not.
      */
     protected boolean canEat(LeafCell leafCell) { 
+        // If the core plant which is being eaten belongs
+        // to a tree, the prey can eat the tree.
         if (leafCell.parentClass() == Tree.class) {
             return true;
         } else {

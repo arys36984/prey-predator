@@ -28,6 +28,7 @@ public abstract class Animal extends Organism
         super(location);
         Random random = new Random();
         female = random.nextBoolean();
+        // Randomly infects animals with a 0.5% chance.
         if (rand.nextDouble() < 0.005) {
             infected = true;
         }
@@ -40,7 +41,9 @@ public abstract class Animal extends Organism
      * Act.
      * @param currentField The current state of the field.
      * @param nextFieldState The new state being built.
-     */
+     * @param time The current day/night cycle.
+     * @param weather The current weather conditions.
+    */
     abstract public void act(Field currentField, Field nextFieldState, Time time, Weather weather);
 
     /**
@@ -49,6 +52,8 @@ public abstract class Animal extends Organism
      * @return true if the animal acts, otherwise false.
      */
     public boolean canAct(Weather weather) {
+        // Adjusts the probability of animals hunting and moving
+        // based on the weather.
         if (weather == Weather.CLEAR) {
             return true;
         }
@@ -73,6 +78,9 @@ public abstract class Animal extends Organism
         List<Location> adjacentLocations = field.getAdjacentLocations(getLocation());
         for (Location loc : adjacentLocations) {
             Animal animal = field.getAnimalAt(loc);
+            // Checks every adjacent location, returning true if a location
+            // contains a animal which is the same species as the current
+            // animal and is the opposite gender to the current animal.
             if ((animal != null) && (animal.getClass() == this.getClass()) 
             && (animal.isFemale() != this.isFemale())) {
                 return true;
@@ -151,6 +159,7 @@ public abstract class Animal extends Organism
 
     /**
      * Set the age of the animal.
+     * @param newAge The age to set the animal to.
      * @return age Age of the animal
      */
     public void setAge(int newAge)

@@ -30,6 +30,7 @@ public class LeafCell extends Plant
      * until eaten from a prey.
      * @param currentField The field currently occupied.
      * @param nextFieldState The updated field.
+     * @param time The current day/night cycle.
      */
     public void act(Field currentField, Field nextFieldState, Time time)
     {

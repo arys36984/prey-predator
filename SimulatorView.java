@@ -50,10 +50,10 @@ public class SimulatorView extends JFrame
         setColor(Snake.class, Color.red);
         setColor(Lion.class, Color.magenta);
         setColor(BerryShrub.class, Color.green);
+        // Represents a dark green
         setColor(Tree.class, new Color(0, 153, 51));
 
         setTitle("Prey and Predator Simulation");
-        // figure out why north label requires this first parameter...
         northLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
 
@@ -97,9 +97,9 @@ public class SimulatorView extends JFrame
     /**
      * Show the current status of the field.
      * @param step Which iteration step it is.
-     * @param time The current state of day/night cycle
+     * @param time The current day/night cycle.
      * @param field The field whose status is to be displayed.
-     * @param weather The current state of weather.
+     * @param weather The current weather conditions.
      */
     public void showStatus(int step, Time time, Field field, Weather weather)
     {
@@ -121,15 +121,21 @@ public class SimulatorView extends JFrame
                 Class<?> plantClass = null;
 
                 if (plant != null) {
-
+                    
+                    // Gets the class of the plant.
                     plantClass = plant.getClass();
 
                     if (plantClass == LeafCell.class) {
+                        // If the class of the plant is a leaf cell,
+                        // changes colour of leaf cell depending on the
+                        // type of plant the parent of the leaf cell is.
                         if (plant instanceof LeafCell leafCell) {
                             Class<?> parentClass = leafCell.parentClass();
 
+                            // Draws green for berry shrub parents.
                             if (parentClass == BerryShrub.class) {
                                 fieldView.drawMark(col, row, Color.green);
+                            // Draws dark green for tree parents.
                             } else if (parentClass == Tree.class) {
                                 fieldView.drawMark(col, row, new Color(0, 153, 51));
                             }   
@@ -142,6 +148,7 @@ public class SimulatorView extends JFrame
                 if(animal != null) {
                     stats.incrementCount(animal.getClass());
 
+                    // Represents infected animals as slightly darker.
                     if (animal.isInfected() == true) {
                         fieldView.drawMark(col, row, getColor(animal.getClass()).darker());
                     } else {

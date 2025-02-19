@@ -42,6 +42,7 @@ public abstract class CorePlant extends Plant
      * the age and goes to next phase when plant is old enough.
      * @param currentField The field currently occupied.
      * @param nextFieldState The updated field.
+     * @param time The current day/night cycle.
      */
     public void act(Field currentField, Field nextFieldState, Time time)
     {
@@ -52,8 +53,12 @@ public abstract class CorePlant extends Plant
                 resetPlant();
             }
 
+            // Increments the growthState by one.
             grow();
 
+            // Changes the phase and grows the plant on the grid
+            // if the growthState reaches the next phase age and
+            // the plant is valid to grow.
             if (growthState == PHASE_2_AGE && validPhase(2)) {
                 changePhase(2);
                 handleGrowth(currentField, nextFieldState);
@@ -90,10 +95,16 @@ public abstract class CorePlant extends Plant
         int width = currentField.getWidth();
         int depth = currentField.getDepth();
 
+        // Represents the min offset as 0 if it is a 2x2 grid, and
+        // -1 if it is a 3x3 grid.
         int minOffSet = (phase == 2) ? 0 : -1;
 
+        // We clear the leaf cells list in order to add more leaf cells
+        // if we reach phase 3.
         if (phase == 3) leafCells.clear();
-
+ 
+        // Adds the leaf cells to the grid and the plant in either 2x2
+        // or 3x3 format.
         for(int roffset = minOffSet; roffset <= 1; roffset++) {
             for(int coffset = minOffSet; coffset <= 1; coffset++) {
                 int nextRow = row + roffset;
@@ -110,6 +121,7 @@ public abstract class CorePlant extends Plant
     /**
      * Removes a leaf cell plant from the list containing
      * all leaf cells within the plant.
+     * @param leafCell The leaf cell to remove.
      */
     public void removeLeafCell(LeafCell leafCell)
     {

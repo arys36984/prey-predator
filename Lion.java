@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Lion extends Predator
 {
-    // Characteristics shared by all wolves (class variables).
+    // Characteristics shared by all lions (class variables).
     // The age at which a lion can start to breed.
     private static final int BREEDING_AGE = 15;
     // The age to which a lion can live.

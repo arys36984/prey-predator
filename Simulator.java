@@ -141,7 +141,7 @@ public class Simulator
     }
 
     /**
-     * Randomly populate the field with prey and predators.
+     * Randomly populate the field with prey, predators and plants.
      */
     private void populate()
     {

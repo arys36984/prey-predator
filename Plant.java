@@ -20,6 +20,7 @@ public abstract class Plant extends Organism
      * Act.
      * @param currentField The current state of the field.
      * @param nextFieldState The new state being built.
+     * @param time The current day/night cycle.
      */
     abstract public void act(Field currentField, Field nextFieldState, Time time);
 }

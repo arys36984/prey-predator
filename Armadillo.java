@@ -48,7 +48,7 @@ public class Armadillo extends Prey
     }
 
     /**
-     * Check if the ocelot is too old to live.
+     * Check if the armadillo is too old to live.
      */
     protected void checkIfTooOld()
     {
@@ -87,13 +87,14 @@ public class Armadillo extends Prey
 
     /**
      * Calculate if an armadillo can move at this step.
-     * @param time The time of day/night.
+     * @param time The current day/night cycle.
      * @return true if the armadillo can move, false otherwise.
      */
     protected boolean canMove(Time time) {
         if (time == Time.DAY) {
             return true;
         }
+        // If the time is night, there is a 50% chance of moving at this step.
         else if ((time == Time.NIGHT) && (randDouble() < 0.5)) {
             return true;
         }
@@ -109,6 +110,8 @@ public class Armadillo extends Prey
      * @return true if the prey can eat the leaf, false if not.
      */
     protected boolean canEat(LeafCell leafCell) {
+        // If the core plant which is being eaten belongs
+        // to a berry shrub, the prey can eat the leaf.
         if (leafCell.parentClass() == BerryShrub.class) {
             return true;
         } else {
