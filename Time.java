@@ -24,6 +24,7 @@ public enum Time
     /**
      * @return The name word as a string.
      */
+    @Override
     public String toString()
     {
         return nameString;

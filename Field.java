@@ -2,7 +2,7 @@ import java.util.*;
 
 /**
  * Represent a rectangular grid of field positions.
- * Each position is able to store a single animal/object.
+ * Each position is able to store a pair of Animal and Plant.
  * 
  * @author David J. Barnes, Aryan Sanvee Vijayan, Alexander Sukhin and Michael Kölling
  * @version 02/02/2025

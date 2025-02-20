@@ -30,6 +30,7 @@ public enum Weather
     /**
      * @return The name word as a string.
      */
+    @Override
     public String toString()
     {
         return nameString;
