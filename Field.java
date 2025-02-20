@@ -171,7 +171,7 @@ public class Field
         }
         return locations;
     }
-    
+
     /** 
      * Return a shuffled list of locations nearby (within 2 blocks)
      * to the given one.
@@ -288,48 +288,31 @@ public class Field
     }
 
     /**
-     * Return whether there is at least one animal of each species in the field.
+     * Return whether there is at least one prey and one predator.
      * There will always be plant cores in the field, only number of edible leaves changes.
-     * @return true if there is at least one animal of each species in the field.
+     * @return true if there is at least one prey and one predator.
      */
     public boolean isViable()
     {
-        boolean armadilloFound = false;
-        boolean ocelotFound = false;
-        boolean giraffeFound = false;
-        boolean snakeFound = false;
-        boolean lionFound = false;
+        boolean preyFound = false;
+        boolean predatorFound = false;
         Iterator<Animal> it = animals.iterator();
-        while(it.hasNext() && ! (armadilloFound && ocelotFound && lionFound
-            && giraffeFound && snakeFound)) {
+        while(it.hasNext() && ! (preyFound && predatorFound)) {
             Animal anAnimal = it.next();
-            if(anAnimal instanceof Armadillo armadillo) {
-                if(armadillo.isAlive()) {
-                    armadilloFound = true;
+            if(anAnimal instanceof Prey prey) {
+                if(prey.isAlive()) {
+                    // if a prey is found, set preyFound to true.
+                    preyFound = true;
                 }
             }
-            else if(anAnimal instanceof Ocelot ocelot) {
-                if(ocelot.isAlive()) {
-                    ocelotFound = true;
-                }
-            }
-            else if(anAnimal instanceof Giraffe giraffe) {
-                if(giraffe.isAlive()) {
-                    giraffeFound = true;
-                }
-            }
-            else if(anAnimal instanceof Snake snake) {
-                if(snake.isAlive()) {
-                    snakeFound = true;
-                }
-            }
-            else if(anAnimal instanceof Lion lion) {
-                if(lion.isAlive()) {
-                    lionFound = true;
+            else if(anAnimal instanceof Predator predator) {
+                if(predator.isAlive()) {
+                    // if a predator is found, set predatorFound to true.
+                    predatorFound = true;
                 }
             }
         }
-        return armadilloFound && ocelotFound && giraffeFound && snakeFound && lionFound;
+        return preyFound && predatorFound;
     }
 
     /**

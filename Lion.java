@@ -18,7 +18,7 @@ public class Lion extends Predator
     // The likelihood of a lion breeding.
     private static final double BREEDING_PROBABILITY = 0.4;
     // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 2;
+    private static final int MAX_LITTER_SIZE = 3;
     // Lions are primarily nocturnal, with low hunting during day.
     // The likelihood of a lion hunting during the night.
     private static final double NIGHT_HUNT_PROBABILITY = 0.9;

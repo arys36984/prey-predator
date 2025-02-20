@@ -26,7 +26,7 @@ public abstract class Prey extends Animal
     {
         // initialise instance variables
         super(location);
-        isFull = true;
+        isFull = true; // prey is born full
         hungerTimer = 0;
     }
 

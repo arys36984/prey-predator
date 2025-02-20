@@ -31,20 +31,20 @@ public abstract class Predator extends Animal
         super(location);
 
         isFull = false;
-        hungerTimer = 0;
 
         if (prey == Armadillo.class) {
             // The number of steps the predator is full for
             // after eating a armadillo.
             FULL_STEPS = 5;
-            HUNGRY_STEPS = randInt(20);
+            HUNGRY_STEPS = 20;
         }
         else if (prey == Giraffe.class) {
             // The number of steps the predator is full for
             // after eating a giraffe.
-            FULL_STEPS = 5;
-            HUNGRY_STEPS = randInt(50);
+            FULL_STEPS = 10;
+            HUNGRY_STEPS = 40;
         }
+        hungerTimer = randInt(HUNGRY_STEPS); //predator is born with some hunger
     }
 
     /**
