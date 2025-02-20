@@ -289,6 +289,7 @@ public class Field
 
     /**
      * Return whether there is at least one animal of each species in the field.
+     * There will always be plant cores in the field, only number of edible leaves changes.
      * @return true if there is at least one animal of each species in the field.
      */
     public boolean isViable()
