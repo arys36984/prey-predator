@@ -37,7 +37,7 @@ public abstract class Predator extends Animal
             // The number of steps the predator is full for
             // after eating a armadillo.
             FULL_STEPS = 5;
-            HUNGRY_STEPS = randInt(10);
+            HUNGRY_STEPS = randInt(20);
         }
         else if (prey == Giraffe.class) {
             // The number of steps the predator is full for

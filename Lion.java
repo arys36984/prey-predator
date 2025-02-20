@@ -16,7 +16,7 @@ public class Lion extends Predator
     // The age to which a lion can live.
     private static final int MAX_AGE = 180;
     // The likelihood of a lion breeding.
-    private static final double BREEDING_PROBABILITY = 0.08;
+    private static final double BREEDING_PROBABILITY = 0.4;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 2;
     // Lions are primarily nocturnal, with low hunting during day.

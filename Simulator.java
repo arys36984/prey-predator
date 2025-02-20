@@ -15,15 +15,15 @@ public class Simulator
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 100;
     // The probability that a ocelot will be created in any given grid position.
-    private static final double OCELOT_CREATION_PROBABILITY = 0.01;
+    private static final double OCELOT_CREATION_PROBABILITY = 0.03;
     // The probability that a armadillo will be created in any given position.
-    private static final double ARMADILLO_CREATION_PROBABILITY = 0.05;    
+    private static final double ARMADILLO_CREATION_PROBABILITY = 0.08;    
     // The probability that a giraffe will be created in any given position.
-    private static final double GIRAFFE_CREATION_PROBABILITY = 0.05;
+    private static final double GIRAFFE_CREATION_PROBABILITY = 0.03;
     // The probability that a snake will be created in any given position.
-    private static final double SNAKE_CREATION_PROBABILITY = 0.01;
+    private static final double SNAKE_CREATION_PROBABILITY = 0.03;
     // The probability that a lion will be created in any given position.
-    private static final double LION_CREATION_PROBABILITY = 0.01;
+    private static final double LION_CREATION_PROBABILITY = 0.02;
     // The probability that a berry shrub will be created in any given position
     private static final double BERRYSHRUB_CREATION_PROBABILITY = 0.02;
     // The probability that a tree will be created in any given position

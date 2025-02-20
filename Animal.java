@@ -70,12 +70,12 @@ public abstract class Animal extends Organism
     }
 
     /**
-     * Checks if there is a compatible mate in the adjacent cells.
+     * Checks if there is a compatible mate in the nearby cells.
      * @param field The field to check for adjacent animals.
      * @return true if a compatible mate is found, false otherwise
      */
     public boolean hasCompatibleMate(Field field) {
-        List<Location> adjacentLocations = field.getAdjacentLocations(getLocation());
+        List<Location> adjacentLocations = field.getNearbyLocations(getLocation());
         for (Location loc : adjacentLocations) {
             Animal animal = field.getAnimalAt(loc);
             // Checks every adjacent location, returning true if a location

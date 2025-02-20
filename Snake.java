@@ -15,12 +15,12 @@ public class Snake extends Predator
     // The age to which a snake can live.
     private static final int MAX_AGE = 250;
     // The likelihood of a snake breeding.
-    private static final double BREEDING_PROBABILITY = 0.3;
+    private static final double BREEDING_PROBABILITY = 0.85;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 30;
     // Snakes are mostly diurnal (active at day).
     // The likelihood of a snake hunting at night.
-    private static final double NIGHT_HUNT_PROBABILITY = 0.25;
+    private static final double NIGHT_HUNT_PROBABILITY = 0.5;
     // The likelihood of a snake hunting at night.
     private static final double DAY_HUNT_PROBABILITY = 0.9;
 

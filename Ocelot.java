@@ -17,7 +17,7 @@ public class Ocelot extends Predator
     // The age to which a ocelot can live.
     private static final int MAX_AGE = 150;
     // The likelihood of a ocelot breeding.
-    private static final double BREEDING_PROBABILITY = 0.3;
+    private static final double BREEDING_PROBABILITY = 0.8;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 5;
     // Ocelots are nocturnal but are somewhat active during day as well.

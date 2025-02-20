@@ -16,9 +16,9 @@ public class Giraffe extends Prey
     // The age to which a giraffe can live.
     private static final int MAX_AGE = 175;
     // The likelihood of a giraffe breeding.
-    private static final double BREEDING_PROBABILITY = 0.7;
+    private static final double BREEDING_PROBABILITY = 0.4;
     // The maximum number of births.
-    private static final int MAX_LITTER_SIZE = 3;
+    private static final int MAX_LITTER_SIZE = 2;
 
     /**
      * Create a new giraffe. A giraffe may be created with age
