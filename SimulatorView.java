@@ -131,7 +131,7 @@ public class SimulatorView extends JFrame
                         // type of plant the parent of the leaf cell is.
                         if (plant instanceof LeafCell leafCell) {
                             Class<?> parentClass = leafCell.parentClass();
-                            
+
                             if (parentClass == BerryShrub.class) {
                                 // Draws green for berry shrub parents.
                                 fieldView.drawMark(col, row, Color.green);
