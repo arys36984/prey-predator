@@ -190,7 +190,7 @@ public class Field
             for(int roffset = -2; roffset <= 2; roffset++) {
                 int nextRow = row + roffset;
                 if(nextRow >= 0 && nextRow < depth) {
-                    for(int coffset = -3; coffset <= 3; coffset++) {
+                    for(int coffset = -2; coffset <= 2; coffset++) {
                         int nextCol = col + coffset;
                         // Exclude invalid locations and the original location.
                         if(nextCol >= 0 && nextCol < width && (roffset != 0 || coffset != 0)) {
